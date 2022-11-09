@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Canvas from "./components/Canvas";
+import CanvasFromFirstTutorial from "./components/CanvasFromFirstTutorial";
 
 function App() {
+  const [showCanvas, setShowCanvas] = useState(true);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {showCanvas && <Canvas height={500} width={500} />}
+
+      {!showCanvas && <CanvasFromFirstTutorial />}
+
+      <button type="button" onClick={() => setShowCanvas(!showCanvas)}>
+        Switch Canvas
+      </button>
     </div>
   );
 }
